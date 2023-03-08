@@ -79,12 +79,12 @@ to their comments.
 | reply           | text |
 
 ## Task List
-[] Project Setup
+1. [] Project Setup
   - [] Client
   - [] Server
-[] DB Design
+2. [] DB Design
  - [] Test on Postman
-[] Connect Client to Server
+3. [] Connect Client to Server
 
 **To Run the Project in Development Mode**
 Execute the Following Commands:
@@ -94,7 +94,7 @@ npm i
 npm run serve
 ```
 
-- in the server directory
+- in the server directory:
 ```
 npm i
 npm run dev
