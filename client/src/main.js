@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faBars } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faInstagram,
@@ -14,6 +14,7 @@ import router from "./router";
 import "./assets/css/tailwind.css";
 
 // Icons
+library.add(faBars);
 library.add(faTwitter);
 library.add(faFacebook);
 library.add(faInstagram);
