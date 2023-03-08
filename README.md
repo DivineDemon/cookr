@@ -85,6 +85,9 @@ to their comments.
 2. [] DB Design
  - [] Test on Postman
 3. [] Connect Client to Server
+4. [] UI Design
+  - [x] Navbar
+  - [x] Landing Page
 
 **To Run the Project in Development Mode**
 Execute the Following Commands:
