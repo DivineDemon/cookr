@@ -80,7 +80,7 @@ to their comments.
 
 ## Task List
 1. [] Project Setup
-  - [] Client
+  - [x] Client
   - [] Server
 2. [] DB Design
  - [] Test on Postman
