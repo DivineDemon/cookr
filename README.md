@@ -77,3 +77,25 @@ to their comments.
 | id (PK)         | int  |
 | comment_id (FK) | text |
 | reply           | text |
+
+## Task List
+[] Project Setup
+  - [] Client
+  - [] Server
+[] DB Design
+ - [] Test on Postman
+[] Connect Client to Server
+
+**To Run the Project in Development Mode**
+Execute the Following Commands:
+- in the client directory:
+```
+npm i
+npm run serve
+```
+
+- in the server directory
+```
+npm i
+npm run dev
+```
