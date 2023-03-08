@@ -47,11 +47,10 @@ to their comments.
 | age       | int  |
 | location  | text |
 | image     | text |
-|------------------|
 
 ### Recipes Table
 | Attribute    | Type |
-| ------------------- |
+| -------------|----- |
 | id (PK)      | int  |
 | user_id (FK) | text |
 | likes        | int  |
@@ -62,22 +61,19 @@ to their comments.
 | created_at   | time |
 | disabled_at  | time |
 | updated_at   | time |
-|---------------------|
 
 ### Comments Table
 | Attribute      | Type |
-| --------------------- |
+| ---------------|----- |
 | id (PK)        | int  |
 | user_id (FK)   | text |
 | comment        | text |
 | recipe_id (FK) | text |
 | likes          | int  |
-|-----------------------|
 
 ### Comment Replies Table
 | Attribute       | Type |
-| ---------------------- |
+| ----------------|----- |
 | id (PK)         | int  |
 | comment_id (FK) | text |
 | reply           | text |
-|------------------------|
