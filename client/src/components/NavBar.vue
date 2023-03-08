@@ -7,7 +7,7 @@
         </label>
         <ul
           tabIndex="0"
-          class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+          class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 font-barlow"
         >
           <li><a>Homepage</a></li>
           <li><a>Portfolio</a></li>
