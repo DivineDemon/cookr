@@ -4,13 +4,17 @@
     <div class="w-full h-full flex flex-row items-center justify-center">
       <!-- Content -->
       <div
-        class="w-[50%] h-[100%] bg-white flex flex-col items-start justify-center px-32 pt-28 leading-tight"
+        class="lg:w-[50%] h-[100%] bg-white flex flex-col items-center md:items-start justify-center px-32 pt-28 leading-tight"
       >
         <p class="uppercase font-barlow tracking-widest">recipes online</p>
-        <h1 class="text-[100px] font-pacifico font-bold capitalize">
+        <h1
+          class="text-[50px] text-center md:text-left md:text-[75px] lg:text-[100px] font-pacifico font-bold capitalize"
+        >
           New recipes every week
         </h1>
-        <p class="mt-10 font-barlow font-medium text-lg capitalize">
+        <p
+          class="hidden md:block mt-10 font-barlow font-medium text-lg capitalize"
+        >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt
           tempore sed placeat maiores optio a laborum quas aut magnam. Ab
           repudiandae ipsa modi a reiciendis impedit nemo, eaque ipsum ex.
@@ -19,7 +23,7 @@
           to="/"
           class="mt-5 px-10 py-3 bg-base-100 text-white font-semibold rounded-full"
         >
-          Discover More
+          <span class="w-full text-xs lg:text-lg">Discover More</span>
         </router-link>
         <div class="mt-40 flex flex-row items-center justify-center space-x-8">
           <font-awesome-icon
@@ -37,7 +41,7 @@
         </div>
       </div>
       <!-- Image -->
-      <div id="landing-image" class="w-[50%] h-[100%]" />
+      <div id="landing-image" class="w-0 lg:w-[50%] h-[100%]" />
     </div>
   </div>
 </template>
