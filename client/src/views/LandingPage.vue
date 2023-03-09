@@ -15,7 +15,7 @@
           New recipes every week
         </h1>
         <p
-          class="hidden md:block mt-10 xl:mt-8 2xl:mt-14 font-barlow font-medium text-lg 2xl:text-2xl capitalize"
+          class="hidden md:block mt-8 lg:mt-5 xl:mt-8 font-barlow font-medium text-lg capitalize"
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt
           tempore sed placeat maiores optio a laborum quas aut magnam. Ab
