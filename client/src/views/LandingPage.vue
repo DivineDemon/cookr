@@ -10,7 +10,7 @@
           recipes online
         </p>
         <h1
-          class="w-[100%] text-[50px] md:text-[100px] lg:text-[50px] xl:text-[75px] 2xl:text-[150px] text-center md:text-left font-pacifico font-bold capitalize"
+          class="w-[100%] text-[50px] md:text-[100px] lg:text-[50px] xl:text-[75px] 2xl:text-[100px] text-center md:text-left font-pacifico font-bold capitalize"
         >
           New recipes every week
         </h1>
