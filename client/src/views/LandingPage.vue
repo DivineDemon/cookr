@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen h-screen bg-white overflow-hidden">
-    <!-- <NavBar :bgColor="'bg-transparent'" /> -->
+    <NavBar :bgColor="'bg-transparent'" />
     <div class="w-full h-full flex flex-row items-center justify-center">
       <!-- Content -->
       <div
@@ -46,9 +46,9 @@
   </div>
 </template>
 
-<!-- <script setup>
+<script setup>
 import NavBar from "@/components/NavBar.vue";
-</script> -->
+</script>
 
 <style scoped>
 #landing-image {

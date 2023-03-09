@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
+  faBell,
   faBars,
   faXmark,
   faChevronDown,
@@ -18,6 +19,7 @@ import router from "./router";
 import "./assets/css/tailwind.css";
 
 // Icons
+library.add(faBell);
 library.add(faBars);
 library.add(faXmark);
 library.add(faTwitter);
