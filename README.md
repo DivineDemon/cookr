@@ -81,9 +81,9 @@ to their comments.
 ## Task List
 1. [] Project Setup
   - [x] Client
-  - [] Server
-2. [] DB Design
- - [] Test on Postman
+  - [x] Server
+2. [x] DB Design
+ - [x] Test on Postman
 3. [] Connect Client to Server
 4. [] UI Design
   - [x] Navbar
