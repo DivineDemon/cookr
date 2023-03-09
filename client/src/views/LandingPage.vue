@@ -4,16 +4,18 @@
     <div class="w-full h-full flex flex-row items-center justify-center">
       <!-- Content -->
       <div
-        class="lg:w-[50%] h-[100%] bg-white flex flex-col items-center md:items-start justify-center px-32 pt-28 leading-tight"
+        class="lg:w-[50%] h-[100%] bg-white flex flex-col items-center md:items-start justify-center px-28 xl:px-32 pt-28 leading-tight"
       >
-        <p class="uppercase font-barlow tracking-widest">recipes online</p>
+        <p class="uppercase font-barlow tracking-widest xl:text-2xl">
+          recipes online
+        </p>
         <h1
-          class="text-[50px] text-center md:text-left md:text-[75px] lg:text-[100px] font-pacifico font-bold capitalize"
+          class="w-[100%] text-[50px] md:text-[100px] lg:text-[50px] xl:text-[75px] 2xl:text-[150px] text-center md:text-left font-pacifico font-bold capitalize"
         >
           New recipes every week
         </h1>
         <p
-          class="hidden md:block mt-10 font-barlow font-medium text-lg capitalize"
+          class="hidden md:block mt-10 xl:mt-8 2xl:mt-14 font-barlow font-medium text-lg 2xl:text-2xl capitalize"
         >
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt
           tempore sed placeat maiores optio a laborum quas aut magnam. Ab
