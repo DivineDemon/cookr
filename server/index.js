@@ -11,7 +11,7 @@ app.use(express.urlencoded({ limit: "200mb", extended: true }));
 app.use(cors());
 
 // Routes
-app.use("/signup", require("./routes/authRoute"));
+app.use("/auth", require("./routes/authRoute"));
 
 // Starting the App
 const PORT = dotenv.parsed.PORT || 3000;
