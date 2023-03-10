@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar fixed top-0 font-barlow" :class="bgColor">
+  <div class="navbar fixed top-0 z-50 font-barlow" :class="bgColor">
     <!-- Hamburger Menu -->
     <div class="navbar-start">
       <div class="dropdown">
