@@ -24,8 +24,8 @@ to their comments.
   - Store
   - Router
 2. Tailwind
-3. Daisy UI
-4. Font Awesome
+3. Custom Responsive Components using Tailwind
+4. Custom Icons Components with SVGs
 5. A Service for Google OAuth **(TBD)**
 
 ### Server
@@ -85,9 +85,18 @@ to their comments.
 2. [x] DB Design
  - [x] Test on Postman
 3. [] Connect Client to Server
-4. [] UI Design
-  - [x] Navbar
-  - [x] Landing Page
+4. [] UI Design (**Subject to Change**)
+  - [] WireFraming
+  - [] Navbar
+  - [] Landing Page
+  - [] Login Page/Component (**No Modals**)
+  - [] User Profile Page
+  - [] Search Results Page
+  - [] Home Page
+  - [] Add Recipe Page
+  - [] Recipe Dashboard
+  - [] Edit Recipe Page
+  - [] Recipe Expanded Page
 
 **To Run the Project in Development Mode**
 Execute the Following Commands:

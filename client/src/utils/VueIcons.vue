@@ -1,3 +1,3 @@
 <template>
-  <router-view />
+  <h1>VueIcons</h1>
 </template>
