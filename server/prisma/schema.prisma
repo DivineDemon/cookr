@@ -31,7 +31,6 @@ model recipe {
   downloads   BigInt?
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
-  deleted_at  DateTime?  @db.DateTime(0)
   comments    comments[]
   user        user       @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "recipe_ibfk_1")
 
