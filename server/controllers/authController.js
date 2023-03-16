@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const prisma = new PrismaClient();
-const SECRET = "guard-recruiting-app" || process.env.JWT_SECRET;
+const SECRET = "cookr-recipe-web-application" || process.env.JWT_SECRET;
 
 const register = async (req, res) => {
   try {
