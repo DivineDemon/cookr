@@ -1,6 +1,9 @@
 const cors = require("cors");
 const dotenv = require("dotenv").config();
 
+// JSON BigInt Parsing Support
+BigInt.prototype.toJSON = function () { return this.toString() };
+
 // Initializing Express App
 const express = require("express");
 const app = express();
@@ -12,6 +15,7 @@ app.use(cors());
 
 // Routes
 app.use("/auth", require("./routes/authRoute"));
+app.use("/recipes", require("./routes/recipeRoute"));
 
 // Starting the App
 const PORT = dotenv.parsed.PORT || 3000;

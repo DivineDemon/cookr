@@ -1,22 +1,27 @@
-const { connection } = require("../utils/db");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
-const addRecipe = (req, res) => {
+const addRecipe = async (req, res) => {
   try {
-    const { name, description, ingredients, user_id } = req.body;
-    const current_timestamp = new Date();
-    connection.query(`INSERT INTO recipes (name, description, ingredients, user_id, created_at, updated_at) VALUES ('${name}', '${description}', '${ingredients}', ${user_id}, '${current_timestamp}', '${current_timestamp}')`, (err, rows) => {
-      if (!err) {
-        res.status(201).json({
-          success: true,
-          message: "Created a New Recipe Successfully!"
-        });
-      } else {
-        res.status(400).json({
-          success: false,
-          message: "Recipe Creation Failed!",
-          err,
-        });
+    const { name, description, ingredients, user_id, likes, downloads, deleted_at } = req.body;
+    const response = await prisma.recipe.create({
+      data: {
+        name,
+        description,
+        ingredients,
+        likes,
+        downloads,
+        deleted_at,
+        user: {
+          connect: { id: user_id },
+        },
       }
+    });
+
+    res.status(200).json({
+      status: true,
+      message: "Recipe Added Successfully!",
+      response,
     });
   } catch (error) {
     res.status(500).json({

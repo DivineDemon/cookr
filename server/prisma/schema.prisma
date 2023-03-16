@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model comments {
+  id        Int       @id @default(autoincrement())
+  user_id   Int
+  recipe_id Int
+  likes     BigInt?
+  comment   String    @db.Text
+  user      user      @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "comments_ibfk_1")
+  recipe    recipe    @relation(fields: [recipe_id], references: [id], onUpdate: Restrict, map: "comments_ibfk_2")
+  replies   replies[]
+
+  @@index([recipe_id], map: "recipe_id")
+  @@index([user_id], map: "user_id")
+}
+
+model recipe {
+  id          Int        @id @default(autoincrement())
+  user_id     Int
+  name        String     @db.Text
+  description String?    @db.Text
+  ingredients String     @db.Text
+  likes       BigInt?
+  downloads   BigInt?
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
+  deleted_at  DateTime?  @db.DateTime(0)
+  comments    comments[]
+  user        user       @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "recipe_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+model replies {
+  id         Int      @id @default(autoincrement())
+  comment_id Int
+  reply      String   @db.Text
+  comments   comments @relation(fields: [comment_id], references: [id], onUpdate: Restrict, map: "replies_ibfk_1")
+
+  @@index([comment_id], map: "comment_id")
+}
+
+model user {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.Text
+  email    String     @unique(map: "email") @db.VarChar(50)
+  password String     @db.Text
+  phone    String?    @db.Text
+  age      Int?
+  location String?    @db.Text
+  image    String?    @db.Text
+  comments comments[]
+  recipe   recipe[]
+}
