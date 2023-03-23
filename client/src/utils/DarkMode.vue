@@ -1,34 +1,36 @@
 <template>
-  <button @click="toggleDarkMode" class="w-6 h-6">
-    <MoonIcon v-if="darkMode" class="text-white" />
-    <SunIcon v-else class="text-yellow-500" />
-  </button>
+  <el-switch
+    size="large"
+    inline-prompt
+    v-model="status"
+    :active-icon="Moon"
+    :inactive-icon="Sunny"
+    @change="toggleDarkMode"
+    style="--el-switch-on-color: #040348; --el-switch-off-color: #87ceeb"
+  />
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup>
 import { useStore } from "vuex";
-import { SunIcon, MoonIcon } from "@heroicons/vue/24/solid";
+import { computed, watch, ref } from "vue";
+import { Sunny, Moon } from "@element-plus/icons-vue";
 
-export default {
-  name: "DarkMode",
-  components: {
-    SunIcon,
-    MoonIcon,
-  },
-  setup() {
-    const store = useStore();
+// Store Instance Initialized
+const store = useStore();
 
-    const darkMode = computed(() => store.state.darkMode);
+// Data
+const status = ref(false);
 
-    function toggleDarkMode() {
-      store.dispatch("toggleDarkMode");
-    }
+// Computed
+const darkModeStatus = computed(() => store.state.darkMode);
 
-    return {
-      darkMode,
-      toggleDarkMode,
-    };
-  },
-};
+// Methods
+function toggleDarkMode() {
+  store.commit("toggleDarkMode");
+}
+
+// Watchers
+watch(darkModeStatus, (newValue) => {
+  status.value = newValue;
+});
 </script>

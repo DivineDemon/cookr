@@ -5,17 +5,17 @@ export default createStore({
   state: {
     darkMode: false,
   },
-  getters: {},
+  getters: {
+    getDarkMode(state) {
+      return state.darkMode;
+    },
+  },
   mutations: {
     toggleDarkMode(state) {
       state.darkMode = !state.darkMode;
     },
   },
-  actions: {
-    toggleDarkMode(context) {
-      context.commit("toggleDarkMode");
-    },
-  },
+  actions: {},
   modules: {},
   plugins: [
     createPersistedState({
