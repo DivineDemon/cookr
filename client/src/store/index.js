@@ -1,9 +1,26 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 export default createStore({
-  state: {},
+  state: {
+    darkMode: false,
+  },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    toggleDarkMode(state) {
+      state.darkMode = !state.darkMode;
+    },
+  },
+  actions: {
+    toggleDarkMode(context) {
+      context.commit("toggleDarkMode");
+    },
+  },
   modules: {},
+  plugins: [
+    createPersistedState({
+      key: "cookr",
+      paths: ["darkMode"],
+    }),
+  ],
 });
