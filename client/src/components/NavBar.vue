@@ -2,13 +2,22 @@
   <div
     class="w-screen py-3 px-5 flex flex-row items-center justify-between bg-componentprimary dark:bg-darkcomponentprimary text-textprimary dark:text-darktextprimary"
   >
-    <!-- Hamburger -->
-    <el-icon
-      size="20"
-      class="text-textprimary dark:text-darktextprimary cursor-pointer"
-    >
-      <Expand />
-    </el-icon>
+    <!-- Hamburger Menu Dropdown -->
+    <el-dropdown>
+      <button>
+        <el-icon size="20">
+          <Expand />
+        </el-icon>
+      </button>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item>About</el-dropdown-item>
+          <el-dropdown-item>Privacy Policy</el-dropdown-item>
+          <el-dropdown-item>Contact Us</el-dropdown-item>
+          <el-dropdown-item>Login/Register</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
 
     <!-- Logo -->
     <img src="@/assets/img/logo.png" alt="logo" class="w-16" />
