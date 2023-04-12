@@ -80,7 +80,7 @@ to their comments.
 
 ## Task List
 1. [] Project Setup
-  - [x] Client
+  - [] Client
   - [x] Server
 2. [x] DB Design
  - [x] Test on Postman
@@ -111,3 +111,7 @@ npm run serve
 npm i
 npm run dev
 ```
+
+## Issues
+- Prisma Not Running on Ubuntu 22.04 Due to GLIBC Version Conflict
+- Client Side is Messy and Color Scheme is Not Attractive
