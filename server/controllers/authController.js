@@ -1,6 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const prisma = new PrismaClient();
 const SECRET = "cookr-recipe-web-application" || process.env.JWT_SECRET;
