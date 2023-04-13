@@ -79,24 +79,24 @@ to their comments.
 | reply           | text |
 
 ## Task List
-1. [] Project Setup
-  - [] Client
-  - [x] Server
-2. [x] DB Design
- - [x] Test on Postman
-3. [] Connect Client to Server
-4. [] UI Design (**Subject to Change**)
-  - [] WireFraming
-  - [] Navbar
-  - [] Landing Page
-  - [] Login Page/Component (**No Modals**)
-  - [] User Profile Page
-  - [] Search Results Page
-  - [] Home Page
-  - [] Add Recipe Page
-  - [] Recipe Dashboard
-  - [] Edit Recipe Page
-  - [] Recipe Expanded Page
+1. [ ] Project Setup
+  - [ ] Client
+  - [ ] Server
+2. [ ] DB Design
+ - [ ] Test on Postman
+3. [ ] Connect Client to Server
+4. [ ] UI Design (**Subject to Change**)
+  - [ ] WireFraming
+  - [ ] Navbar
+  - [ ] Landing Page
+  - [ ] Login Page/Component (**No Modals**)
+  - [ ] User Profile Page
+  - [ ] Search Results Page
+  - [ ] Home Page
+  - [ ] Add Recipe Page
+  - [ ] Recipe Dashboard
+  - [ ] Edit Recipe Page
+  - [ ] Recipe Expanded Page
 
 **To Run the Project in Development Mode**
 Execute the Following Commands:
