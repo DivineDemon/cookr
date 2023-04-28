@@ -82,10 +82,10 @@ to their comments.
 - [ ] Project Setup
   - [ ] Client
   - [ ] Server
-2. [ ] DB Design
+- [ ] DB Design
  - [ ] Test on Postman
-3. [ ] Connect Client to Server
-4. [ ] UI Design (**Subject to Change**)
+- [ ] Connect Client to Server
+- [ ] UI Design (**Subject to Change**)
   - [ ] WireFraming
   - [ ] Navbar
   - [ ] Landing Page
