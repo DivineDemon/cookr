@@ -21,8 +21,8 @@ to their comments.
 ## Stack
 ### Client
 1. Vue 3
-  1. Store
-  2. Router
+  * Store
+  * Router
 2. Tailwind
 3. Custom Responsive Components using Tailwind
 4. Custom Icons Components with SVGs
