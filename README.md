@@ -79,7 +79,7 @@ to their comments.
 | reply           | text |
 
 ## Task List
-1. [ ] Project Setup
+- [ ] Project Setup
   - [ ] Client
   - [ ] Server
 2. [ ] DB Design
