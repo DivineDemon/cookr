@@ -81,7 +81,7 @@ to their comments.
   - [ ] Client
   - [x] Server
 - [x] DB Design
- - [ ] Test on Postman
+ - [x] Test on Postman
 - [ ] Connect Client to Server
 - [ ] UI Design (**Subject to Change**)
   - [ ] WireFraming
