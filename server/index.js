@@ -11,7 +11,7 @@ app.use(express.json({ limit: "200mb", extended: true }));
 app.use(cors());
 
 // Routes
-app.use("/api/user", require("./routes/userRoutes"));
+app.use("/api/user", require("./routes/authRoutes"));
 
 // Start Server
 const PORT = process.env.PORT || 3000;
