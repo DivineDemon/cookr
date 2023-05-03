@@ -111,5 +111,6 @@ npm run dev
 ```
 
 ## Issues
-- Prisma Not Running on Ubuntu 22.04 Due to GLIBC Version Conflict
-- Client Side is Messy and Color Scheme is Not Attractive
+- Handle Empty Returning Data
+- Recipe Likes and Downloads not Incrementing
+- Rethink the Implementation of "Reply" Table
