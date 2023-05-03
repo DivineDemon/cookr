@@ -7,55 +7,54 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model comment {
-  id        Int     @id @default(autoincrement())
+model comments {
+  id        Int       @id @default(autoincrement())
   user_id   Int
   recipe_id Int
-  comment   String  @db.Text
-  likes     BigInt
-  user      user    @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "comment_ibfk_1")
-  recipe    recipe  @relation(fields: [recipe_id], references: [id], onDelete: Cascade, map: "comment_ibfk_2")
-  reply     reply[]
+  likes     BigInt?
+  comment   String    @db.Text
+  user      user      @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "comments_ibfk_1")
+  recipe    recipe    @relation(fields: [recipe_id], references: [id], onUpdate: Restrict, map: "comments_ibfk_2")
+  replies   replies[]
 
-  @@index([user_id], map: "comment_ibfk_1")
-  @@index([recipe_id], map: "comment_ibfk_2")
+  @@index([recipe_id], map: "recipe_id")
+  @@index([user_id], map: "user_id")
 }
 
 model recipe {
-  id          Int       @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   user_id     Int
-  likes       BigInt
-  name        String    @db.Text
-  description String    @db.Text
-  ingredients String    @db.Text
-  downloads   BigInt
-  created_at  DateTime  @default(now())
-  updated_at  DateTime  @updatedAt
-  disabled_at DateTime  @default(dbgenerated("('0000-00-00 00:00:00')")) @db.Timestamp(0)
-  comment     comment[]
-  user        user      @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "recipe_ibfk_1")
+  name        String     @db.Text
+  description String?    @db.Text
+  ingredients String     @db.Text
+  likes       BigInt?
+  downloads   BigInt?
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @updatedAt
+  comments    comments[]
+  user        user       @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "recipe_ibfk_1")
 
-  @@index([user_id], map: "recipe_ibfk_1")
+  @@index([user_id], map: "user_id")
 }
 
-model reply {
-  id         Int     @id @default(autoincrement())
+model replies {
+  id         Int      @id @default(autoincrement())
   comment_id Int
-  reply      String  @db.Text
-  comment    comment @relation(fields: [comment_id], references: [id], onDelete: Cascade, map: "reply_ibfk_1")
+  reply      String   @db.Text
+  comments   comments @relation(fields: [comment_id], references: [id], onUpdate: Restrict, map: "replies_ibfk_1")
 
-  @@index([comment_id], map: "reply_ibfk_1")
+  @@index([comment_id], map: "comment_id")
 }
 
 model user {
-  id       Int       @id @default(autoincrement())
-  name     String    @db.Text
-  email    String    @db.Text
-  password String    @db.Text
-  phone    String    @db.Text
-  age      Int
-  location String    @db.Text
-  image    String    @db.Text
-  comment  comment[]
+  id       Int        @id @default(autoincrement())
+  name     String     @db.Text
+  email    String     @unique(map: "email") @db.VarChar(50)
+  password String     @db.Text
+  phone    String?    @db.Text
+  age      Int?
+  location String?    @db.Text
+  image    String?    @db.Text
+  comments comments[]
   recipe   recipe[]
 }
