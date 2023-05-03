@@ -68,7 +68,7 @@ const getRecipe = async (req, res) => {
 
 const addRecipe = async (req, res) => {
   try {
-    const { name, description, ingredients, user_id, likes, downloads, deleted_at } = req.body;
+    const { name, description, ingredients, likes, downloads } = req.body;
     const response = await prisma.recipe.create({
       data: {
         name,
@@ -76,9 +76,8 @@ const addRecipe = async (req, res) => {
         ingredients,
         likes,
         downloads,
-        deleted_at,
         user: {
-          connect: { id: user_id },
+          connect: { id: req.user.id },
         },
       }
     });
