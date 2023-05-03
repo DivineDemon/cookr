@@ -78,7 +78,7 @@ to their comments.
 
 ## Task List
 - [x] Project Setup
-  - [ ] Client
+  - [x] Client
   - [x] Server
 - [x] DB Design
  - [x] Test on Postman
