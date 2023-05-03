@@ -16,7 +16,8 @@ app.use(cors());
 // Routes
 app.use("/api/user", require("./routes/authRoutes"));
 app.use("/api/recipe", require("./routes/recipeRoutes"));
+app.use("/api/comment", require("./routes/commentRoutes"));
 
 // Start Server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server Running on Port: ${PORT}.`))
+app.listen(PORT, () => console.log(`Server Running on Port: ${PORT}.`));

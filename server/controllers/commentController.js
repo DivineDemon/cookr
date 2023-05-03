@@ -76,17 +76,17 @@ const getComment = async (req, res) => {
 
 const addComment = async (req, res) => {
   try {
-    const { name, description, ingredients, likes, downloads } = req.body;
+    const { comment, likes } = req.body;
     const response = await prisma.comment.create({
       data: {
-        name,
-        description,
-        ingredients,
+        comment,
         likes,
-        downloads,
         user: {
           connect: { id: req.user.id },
         },
+        recipe: {
+          connect: { id: Number(req.params.recipe_id) },
+        }
       }
     });
 
@@ -99,7 +99,7 @@ const addComment = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -151,9 +151,32 @@ const updateComment = async (req, res) => {
   }
 };
 
+const likeComment = async (req, res) => {
+  try {
+    const comment_id = Number(req.query.comment_id);
+    const response = await prisma.comment.update({
+      where: { id: comment_id },
+      data: { likes: { increment: 1 } },
+    });
+
+    res.status(200).json({
+      status: true,
+      message: "Comment Liked Successfully!",
+      response,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Please Try Again!",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   addComment,
   getComment,
+  likeComment,
   deleteComment,
   updateComment,
   getUserComments,

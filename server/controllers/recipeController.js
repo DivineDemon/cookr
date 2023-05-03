@@ -143,9 +143,32 @@ const updateRecipe = async (req, res) => {
   }
 };
 
+const likeRecipe = async (req, res) => {
+  try {
+    const recipe_id = Number(req.query.recipe_id);
+    const response = await prisma.recipe.update({
+      where: { id: recipe_id },
+      data: { likes: { increment: 1 } },
+    });
+
+    res.status(200).json({
+      status: true,
+      message: "Recipe Liked Successfully!",
+      response,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Please Try Again!",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   addRecipe,
   getRecipe,
+  likeRecipe,
   deleteRecipe,
   updateRecipe,
   getAllRecipes,
