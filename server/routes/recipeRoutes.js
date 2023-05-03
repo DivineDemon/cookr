@@ -7,7 +7,8 @@ const {
   getRecipe,
   deleteRecipe,
   updateRecipe,
-  likeRecipe
+  likeRecipe,
+  downloadRecipe
 } = require("../controllers/recipeController");
 
 const router = express.Router();
@@ -15,6 +16,7 @@ const router = express.Router();
 router.get("/", getAllRecipes);
 router.patch("/like", likeRecipe);
 router.get("/user", getUserRecipes);
+router.patch("/download", downloadRecipe);
 router.post("/add-recipe", verifyToken, addRecipe);
 router.route("/recipe")
   .get(getRecipe)

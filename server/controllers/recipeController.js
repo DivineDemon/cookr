@@ -13,7 +13,7 @@ const getAllRecipes = async (_, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -38,7 +38,7 @@ const getUserRecipes = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -61,7 +61,7 @@ const getRecipe = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -91,7 +91,7 @@ const addRecipe = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -114,7 +114,7 @@ const deleteRecipe = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -138,7 +138,7 @@ const updateRecipe = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -165,6 +165,28 @@ const likeRecipe = async (req, res) => {
   }
 };
 
+const downloadRecipe = async (req, res) => {
+  try {
+    const recipe_id = Number(req.query.recipe_id);
+    const response = await prisma.recipe.update({
+      where: { id: recipe_id },
+      data: { downloads: { increment: 1 } },
+    });
+
+    res.status(200).json({
+      status: true,
+      message: "Recipe Downloaded Successfully!",
+      response,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Please Try Again!",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   addRecipe,
   getRecipe,
@@ -173,4 +195,5 @@ module.exports = {
   updateRecipe,
   getAllRecipes,
   getUserRecipes,
+  downloadRecipe,
 }

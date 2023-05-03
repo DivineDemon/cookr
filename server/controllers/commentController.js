@@ -21,7 +21,7 @@ const getUserComments = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -46,7 +46,7 @@ const getRecipeComments = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -69,7 +69,7 @@ const getComment = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -122,7 +122,7 @@ const deleteComment = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -146,7 +146,7 @@ const updateComment = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };

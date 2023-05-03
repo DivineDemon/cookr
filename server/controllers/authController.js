@@ -43,7 +43,7 @@ const register = async (req, res) => {
     res.status(500).json({
       status: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
@@ -82,7 +82,7 @@ const login = async (req, res) => {
     res.status(500).json({
       status: false,
       message: "Please Try Again!",
-      error,
+      error: error.message,
     });
   }
 };
