@@ -77,10 +77,10 @@ to their comments.
 | reply           | text |
 
 ## Task List
-- [ ] Project Setup
+- [x] Project Setup
   - [ ] Client
-  - [ ] Server
-- [ ] DB Design
+  - [x] Server
+- [x] DB Design
  - [ ] Test on Postman
 - [ ] Connect Client to Server
 - [ ] UI Design (**Subject to Change**)

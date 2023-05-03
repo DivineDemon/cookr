@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model comment {
+  id        Int     @id @default(autoincrement())
+  user_id   Int
+  recipe_id Int
+  comment   String  @db.Text
+  likes     BigInt
+  user      user    @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "comment_ibfk_1")
+  recipe    recipe  @relation(fields: [recipe_id], references: [id], onDelete: Cascade, map: "comment_ibfk_2")
+  reply     reply[]
+
+  @@index([user_id], map: "comment_ibfk_1")
+  @@index([recipe_id], map: "comment_ibfk_2")
+}
+
+model recipe {
+  id          Int       @id @default(autoincrement())
+  user_id     Int
+  likes       BigInt
+  name        String    @db.Text
+  description String    @db.Text
+  ingredients String    @db.Text
+  downloads   BigInt
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  disabled_at DateTime  @default(dbgenerated("('0000-00-00 00:00:00')")) @db.Timestamp(0)
+  comment     comment[]
+  user        user      @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "recipe_ibfk_1")
+
+  @@index([user_id], map: "recipe_ibfk_1")
+}
+
+model reply {
+  id         Int     @id @default(autoincrement())
+  comment_id Int
+  reply      String  @db.Text
+  comment    comment @relation(fields: [comment_id], references: [id], onDelete: Cascade, map: "reply_ibfk_1")
+
+  @@index([comment_id], map: "reply_ibfk_1")
+}
+
+model user {
+  id       Int       @id @default(autoincrement())
+  name     String    @db.Text
+  email    String    @db.Text
+  password String    @db.Text
+  phone    String    @db.Text
+  age      Int
+  location String    @db.Text
+  image    String    @db.Text
+  comment  comment[]
+  recipe   recipe[]
+}
