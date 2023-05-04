@@ -105,4 +105,3 @@ npm run dev
 
 ## Issues
 - Handle Empty Returning Data
-- Recipe Likes and Downloads not Incrementing

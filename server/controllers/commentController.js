@@ -76,10 +76,10 @@ const getComment = async (req, res) => {
 
 const addComment = async (req, res) => {
   try {
-    const { comment, likes } = req.body;
+    const { content, likes } = req.body;
     const response = await prisma.comment.create({
       data: {
-        comment,
+        content,
         likes,
         user: {
           connect: { id: req.user.id },

@@ -30,8 +30,8 @@ model recipe {
   name        String    @db.Text
   description String?   @db.Text
   ingredients String    @db.Text
-  likes       BigInt?
-  downloads   BigInt?
+  likes       BigInt?   @default(0)
+  downloads   BigInt?   @default(0)
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
   comments    comment[]

@@ -20,8 +20,8 @@ CREATE TABLE `recipe` (
     `name` TEXT NOT NULL,
     `description` TEXT NULL,
     `ingredients` TEXT NOT NULL,
-    `likes` BIGINT NULL,
-    `downloads` BIGINT NULL,
+    `likes` BIGINT NULL DEFAULT 0,
+    `downloads` BIGINT NULL DEFAULT 0,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
