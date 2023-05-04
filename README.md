@@ -1,7 +1,7 @@
 # cookr
 ### A Recipe Sharing App
 
-**Discover a New and Perhaps a more Friendly Way of Cooking with Great Homecooks and Chefs from Around the World.**
+**Discover a New and Perhaps a Friendlier Way of Cooking with Great Homecooks and Chefs from Around the World.**
 
 Cookr is a web app aimed at helping homecooks and chefs from around the world share their recipes and gain traction
 on it as well. It's almost like a social media application but for cooking and food enthusiasts. You can save recipes

@@ -8,53 +8,44 @@ datasource db {
 }
 
 model comment {
-  id        Int       @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   user_id   Int
   recipe_id Int
-  likes     BigInt?
-  comment   String    @db.Text
-  user      user      @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "comments_ibfk_1")
-  recipe    recipe    @relation(fields: [recipe_id], references: [id], onUpdate: Restrict, map: "comments_ibfk_2")
-  replies   reply[]
+  reply_id  Int?
+  likes     BigInt? @default(0)
+  comment   String  @db.Text
+  user      user    @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "comments_ibfk_1")
+  recipe    recipe  @relation(fields: [recipe_id], references: [id], onDelete: Cascade, map: "comments_ibfk_2")
 
   @@index([recipe_id], map: "recipe_id")
   @@index([user_id], map: "user_id")
 }
 
 model recipe {
-  id          Int        @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   user_id     Int
-  name        String     @db.Text
-  description String?    @db.Text
-  ingredients String     @db.Text
+  name        String    @db.Text
+  description String?   @db.Text
+  ingredients String    @db.Text
   likes       BigInt?
   downloads   BigInt?
-  created_at  DateTime   @default(now())
-  updated_at  DateTime   @updatedAt
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
   comments    comment[]
-  user        user       @relation(fields: [user_id], references: [id], onUpdate: Restrict, map: "recipe_ibfk_1")
+  user        user      @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "recipe_ibfk_1")
 
   @@index([user_id], map: "user_id")
 }
 
-model reply {
-  id         Int      @id @default(autoincrement())
-  comment_id Int
-  reply      String   @db.Text
-  comments   comment @relation(fields: [comment_id], references: [id], onUpdate: Restrict, map: "replies_ibfk_1")
-
-  @@index([comment_id], map: "comment_id")
-}
-
 model user {
-  id       Int        @id @default(autoincrement())
-  name     String     @db.Text
-  email    String     @unique(map: "email") @db.VarChar(50)
-  password String     @db.Text
-  phone    String?    @db.Text
+  id       Int       @id @default(autoincrement())
+  name     String    @db.Text
+  email    String    @unique(map: "email") @db.VarChar(50)
+  password String    @db.Text
+  phone    String?   @db.Text
   age      Int?
-  location String?    @db.Text
-  image    String?    @db.Text
+  location String?   @db.Text
+  image    String?   @db.Text
   comments comment[]
   recipe   recipe[]
 }
