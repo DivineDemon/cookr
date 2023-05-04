@@ -47,26 +47,26 @@ to their comments.
 | image     | text |          |
 
 ### Recipes Table
-| Attribute    | Type |  Attrib  |
-| ------------ | ---- | -------- |
-| id (PK)      | int  | NOT_NULL |
-| user_id (FK) | int  | NOT_NULL |
-| likes        | int  |          |
-| name         | text | NOT_NULL |
-| description  | text |          |
-| ingredients  | text |          |
-| downloads    | int  |          |
-| created_at   | time |          |
-| updated_at   | time |          |
+| Attribute    | Type |  Attrib  | Default |
+| ------------ | ---- | -------- | ------- |
+| id (PK)      | int  | NOT_NULL |         |
+| user_id (FK) | int  | NOT_NULL |         |
+| likes        | int  |          | 0       |
+| name         | text | NOT_NULL |         |
+| description  | text |          |         |
+| ingredients  | text |          |         |
+| downloads    | int  |          | 0       |
+| created_at   | time |          |         |
+| updated_at   | time |          |         |
 
 ### Comments Table
-| Attribute      | Type |  Attrib  |
-| -------------- | ---- | -------- |
-| id (PK)        | int  | NOT_NULL |
-| user_id (FK)   | int  | NOT_NULL |
-| recipe_id (FK) | int  | NOT_NULL |
-| content        | text |          |
-| likes          | int  |          |
+| Attribute      | Type |  Attrib  | Default |
+| -------------- | ---- | -------- | ------- |
+| id (PK)        | int  | NOT_NULL |         |
+| user_id (FK)   | int  | NOT_NULL |         |
+| recipe_id (FK) | int  | NOT_NULL |         |
+| content        | text |          |         |
+| likes          | int  |          | 0       |
 
 ### Comment Replies Table
 | Attribute       | Type |  Attrib  |
