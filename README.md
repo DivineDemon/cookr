@@ -35,46 +35,39 @@ to their comments.
 
 ## Database Schema
 ### User Table
-| Attribute | Type |
-| --------- | ---- |
-| id (PK)   | int  |
-| name      | text |
-| email     | text |
-| password  | text |
-| phone     | text |
-| age       | int  |
-| location  | text |
-| image     | text |
+| Attribute | Type |  Attrib  |
+| --------- | ---- | -------- |
+| id (PK)   | int  | NOT_NULL |
+| name      | text | NOT_NULL |
+| email     | text | NOT_NULL |
+| password  | text | NOT_NULL |
+| phone     | text |          |
+| age       | int  |          |
+| location  | text |          |
+| image     | text |          |
 
 ### Recipes Table
-| Attribute    | Type |
-| -------------|----- |
-| id (PK)      | int  |
-| user_id (FK) | text |
-| likes        | int  |
-| name         | text |
-| description  | text |
-| ingredients  | text |
-| downloads    | int  |
-| created_at   | time |
-| disabled_at  | time |
-| updated_at   | time |
+| Attribute    | Type |  Attrib  |
+| ------------ | ---- | -------- |
+| id (PK)      | int  | NOT_NULL |
+| user_id (FK) | int  | NOT_NULL |
+| likes        | int  |          |
+| name         | text | NOT_NULL |
+| description  | text |          |
+| ingredients  | text |          |
+| downloads    | int  |          |
+| created_at   | time |          |
+| updated_at   | time |          |
 
 ### Comments Table
-| Attribute      | Type |
-| ---------------|----- |
-| id (PK)        | int  |
-| user_id (FK)   | text |
-| comment        | text |
-| recipe_id (FK) | text |
-| likes          | int  |
-
-### Comment Replies Table
-| Attribute       | Type |
-| ----------------|----- |
-| id (PK)         | int  |
-| comment_id (FK) | text |
-| reply           | text |
+| Attribute      | Type |  Attrib  |
+| -------------- | ---- | -------- |
+| id (PK)        | int  | NOT_NULL |
+| user_id (FK)   | int  | NOT_NULL |
+| reply_id (FK)  | int  | NOT_NULL |
+| recipe_id (FK) | int  | NOT_NULL |
+| content        | text |          |
+| likes          | int  |          |
 
 ## Task List
 - [x] Project Setup
@@ -113,4 +106,3 @@ npm run dev
 ## Issues
 - Handle Empty Returning Data
 - Recipe Likes and Downloads not Incrementing
-- Rethink the Implementation of "Reply" Table

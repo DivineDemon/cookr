@@ -5,10 +5,11 @@ CREATE TABLE `comment` (
     `recipe_id` INTEGER NOT NULL,
     `reply_id` INTEGER NULL,
     `likes` BIGINT NULL DEFAULT 0,
-    `comment` TEXT NOT NULL,
+    `content` TEXT NOT NULL,
 
     INDEX `recipe_id`(`recipe_id`),
     INDEX `user_id`(`user_id`),
+    INDEX `reply_id`(`reply_id`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -42,6 +43,9 @@ CREATE TABLE `user` (
     UNIQUE INDEX `email`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `comment` ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`reply_id`) REFERENCES `comment`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `comment` ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
