@@ -64,7 +64,6 @@ to their comments.
 | -------------- | ---- | -------- | ------- |
 | id (PK)        | int  | NOT_NULL |         |
 | user_id (FK)   | int  | NOT_NULL |         |
-| recipe_id (FK) | int  | NOT_NULL |         |
 | content        | text |          |         |
 | likes          | int  |          | 0       |
 
@@ -73,21 +72,28 @@ to their comments.
 | --------------- | ---- | -------- |
 | id (PK)         | int  | NOT_NULL |
 | comment_id (FK) | int  | NOT_NULL |
-| reply_id (FK)   | int  | NOT_NULL |
+| reply_id        | int  | NOT_NULL |
 
 ### User Followers Table
 | Attribute        | Type |  Attrib  |
 | ---------------- | ---- | -------- |
 | id (PK)          | int  | NOT_NULL |
 | user_id (FK)     | int  | NOT_NULL |
-| follower_id (FK) | int  | NOT_NULL |
+| follower_id      | int  | NOT_NULL |
 
 ### User Following Table
 | Attribute         | Type |  Attrib  |
 | ----------------- | ---- | -------- |
 | id (PK)           | int  | NOT_NULL |
 | user_id (FK)      | int  | NOT_NULL |
-| following_id (FK) | int  | NOT_NULL |
+| following_id      | int  | NOT_NULL |
+
+### Recipe Comment Table
+| Attribute         | Type |  Attrib  |
+| ----------------- | ---- | -------- |
+| id (PK)           | int  | NOT_NULL |
+| recipe_id (FK)    | int  | NOT_NULL |
+| comment_id (FK)   | int  | NOT_NULL |
 
 ## Task List
 - [x] Project Setup
