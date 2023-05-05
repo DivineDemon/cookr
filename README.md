@@ -117,8 +117,8 @@ to their comments.
 - Recipe:
   1. Get All Recipes ("/api/recipe")
   2. Get User Recipes
-    * Route: ("/api/recipe/user")
-    * Protected Route
+    1. Route: ("/api/recipe/user")
+    2. Protected Route
   3. Add Recipe
     - Route: ("/api/recipe")
     - Protected Route
