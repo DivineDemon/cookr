@@ -19,7 +19,7 @@ const addReply = async (req, res) => {
     // Associate New Reply with Respective Comment
     const response = await prisma.comment_replies.create({
       data: {
-        comment_id: Number(req.params.comment_id),
+        comment_id: Number(req.query.comment_id),
         reply_id: newReply.id,
       },
     });

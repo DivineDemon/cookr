@@ -14,7 +14,8 @@ app.use(express.json({ limit: "200mb", extended: true }));
 app.use(cors());
 
 // Routes
-app.use("/api/user", require("./routes/authRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/reply", require("./routes/replyRoutes"));
 app.use("/api/recipe", require("./routes/recipeRoutes"));
 app.use("/api/comment", require("./routes/commentRoutes"));
 

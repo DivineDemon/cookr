@@ -115,7 +115,7 @@ const addComment = async (req, res) => {
     // Associate New Comment with Respective Recipe
     const response = await prisma.recipe_comments.create({
       data: {
-        recipe_id: Number(req.params.recipe_id),
+        recipe_id: Number(req.query.recipe_id),
         comment_id: newComment.id,
       },
     });
