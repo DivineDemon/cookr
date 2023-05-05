@@ -100,80 +100,80 @@ to their comments.
 ![ERD Diagram for Cookr Database](https://svgshare.com/i/snd.svg)
 
 ## API Endpoints
-  - Auth:
-    1. Register User
+- Auth:
+  1. Register User
       - Route: ("/api/auth/register")
-    2. Login User
+  2. Login User
       - Route: ("/api/auth/login")
-  - User:
-    1. Follow User
-        - Route: ("/api/user/follow")
-        - Protected Route
-        - Requires ID of the Followed User from `req.query`
-    2. Unfollow User
+- User:
+  1. Follow User
+      - Route: ("/api/user/follow")
+      - Protected Route
+      - Requires ID of the Followed User from `req.query`
+  2. Unfollow User
       - Route: ("/api/user/unfollow")
       - Protected Route
       - Requires ID of the Followed User from `req.query`
-  - Recipe:
-    1. Get All Recipes ("/api/recipe")
-    2. Get User Recipes
+- Recipe:
+  1. Get All Recipes ("/api/recipe")
+  2. Get User Recipes
       - Route: ("/api/recipe/user")
       - Protected Route
-    3. Add Recipe
+  3. Add Recipe
       - Route: ("/api/recipe")
       - Protected Route
-    4. Get Recipe
+  4. Get Recipe
       - Route: ("/api/recipe/recipe")
       - Requires ID of Recipe Required from `req.query`
-    5. Delete Recipe
+  5. Delete Recipe
       - Route: ("/api/recipe/recipe")
       - Requires ID of Recipe Required from `req.query`
-    6. Update Recipe
+  6. Update Recipe
       - Route: ("/api/recipe/recipe")
       - Requires ID of Recipe Required from `req.query`
-    7. Like Recipe
+  7. Like Recipe
       - Route: ("/api/recipe/like")
       - Requires ID of Recipe Required from `req.query`
-    8. Download Recipe
+  8. Download Recipe
       - Route: ("/api/recipe/download")
       - Requires ID of Recipe Required from `req.query`
-  - Comment:
-    1. Get User Comments
+- Comment:
+  1. Get User Comments
       - Route: ("/api/comment/user-comments")
       - Requires ID of User whose Comments are to be Fetched from `req.query`
-    2. Get Recipe Comments
+  2. Get Recipe Comments
       - Route: ("/api/comment/recipe-comments")
       - Requires ID of Recipe whose Comments are to be Fetched from `req.query`
-    3. Get Comment
+  3. Get Comment
       - Route: ("/api/comment/")
-    4. Add Comment
+  4. Add Comment
       - Protected Route
       - Requires ID of the Recipe the Comment is associated to from `req.query`
-    5. Delete Comment
+  5. Delete Comment
       - Route: ("/api/comment")
       - Requires ID of the Comment from `req.query`
-    6. Update Comment
+  6. Update Comment
       - Route: ("/api/comment")
       - Requires ID of the Comment from `req.query`
-    7. Like Comment
+  7. Like Comment
       - Route: ("/api/comment/like")
       - Requires ID of Comment Required from `req.query`
-    - Reply:
-    1. Get Comment Replies
+  - Reply:
+  1. Get Comment Replies
       - Route: ("/api/reply/comment-replies")
       - Requires ID of Comment whose Replies are to be Fetched from `req.query`
-    2. Get Reply
+  2. Get Reply
       - Route: ("/api/reply")
-    3. Add Reply
+  3. Add Reply
       - Protected Route
       - Requires ID of the Comment the Reply is associated to from `req.query`
-    4. Delete Reply
+  4. Delete Reply
       - Route: ("/api/reply")
       - Requires ID of the Reply from `req.query`
-    5. Update Reply
+  5. Update Reply
       - Route: ("/api/reply")
       - Requires ID of the Reply from `req.query`
-    6. Like Reply
+  6. Like Reply
       - Route: ("/api/reply/like")
       - Requires ID of Reply Required from `req.query`
 
