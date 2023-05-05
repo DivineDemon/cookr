@@ -107,9 +107,9 @@ to their comments.
       - Route: ("/api/auth/login")
   - User:
     1. Follow User
-      - Route: ("/api/user/follow")
-      - Protected Route
-      - Requires ID of the Followed User from `req.query`
+        - Route: ("/api/user/follow")
+        - Protected Route
+        - Requires ID of the Followed User from `req.query`
     2. Unfollow User
       - Route: ("/api/user/unfollow")
       - Protected Route
