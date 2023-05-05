@@ -29,18 +29,41 @@ const getUserComments = async (req, res) => {
 const getRecipeComments = async (req, res) => {
   try {
     const recipe_id = Number(req.query.recipe_id);
-    const response = await prisma.comment.findMany({
+    const response = await prisma.recipe_comments.findMany({
       where: {
         recipe: {
           id: recipe_id,
         },
       },
+      select: {
+        comment_id: true,
+      },
     });
 
+    // Get Comments from IDs Collected
+    const comments = await Promise.all(response.map((id) => {
+      const data = prisma.comment.findMany({
+        where: {
+          id: id.comment_id,
+        },
+      }).then((response) => {
+        return response[0];
+      }).catch((error) => {
+        res.status(404).json({
+          success: false,
+          message: "Comments Not Found!",
+          error: error.message,
+        });
+      });
+
+      return data;
+    }));
+
     res.status(200).json({
-      status: true,
-      message: "Retrieved Recipe Comments!",
-      response,
+      success: true,
+      message: "Retrieved all Recipe Comments!",
+      recipe_id,
+      comments,
     });
   } catch (error) {
     res.status(500).json({
@@ -77,17 +100,24 @@ const getComment = async (req, res) => {
 const addComment = async (req, res) => {
   try {
     const { content, likes } = req.body;
-    const response = await prisma.comment.create({
+
+    // Create New Comment
+    const newComment = await prisma.comment.create({
       data: {
         content,
         likes,
         user: {
           connect: { id: req.user.id },
         },
-        recipe: {
-          connect: { id: Number(req.params.recipe_id) },
-        }
-      }
+      },
+    });
+
+    // Associate New Comment with Respective Recipe
+    const response = await prisma.recipe_comments.create({
+      data: {
+        recipe_id: Number(req.params.recipe_id),
+        comment_id: newComment.id,
+      },
     });
 
     res.status(200).json({
@@ -175,7 +205,7 @@ const likeComment = async (req, res) => {
 
 module.exports = {
   addComment,
-  getComment,
+  getComment, 
   likeComment,
   deleteComment,
   updateComment,

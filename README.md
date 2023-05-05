@@ -95,6 +95,9 @@ to their comments.
 | recipe_id (FK)    | int  | NOT_NULL |
 | comment_id (FK)   | int  | NOT_NULL |
 
+## Database ERD
+![ERD Diagram for Cookr Database](https://svgshare.com/i/snd.svg)
+
 ## Task List
 - [x] Project Setup
   - [x] Client

@@ -4,14 +4,24 @@ const prisma = new PrismaClient();
 const addReply = async (req, res) => {
   try {
     const { content, likes } = req.body;
-    const response = await prisma.comment.create({
+
+    // Create New Comment
+    const newReply = await prisma.comment.create({
       data: {
         content,
         likes,
         user: {
           connect: { id: req.user.id },
         },
-      }
+      },
+    });
+
+    // Associate New Reply with Respective Comment
+    const response = await prisma.comment_replies.create({
+      data: {
+        comment_id: Number(req.params.comment_id),
+        reply_id: newReply.id,
+      },
     });
 
     res.status(200).json({
