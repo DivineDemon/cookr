@@ -10,13 +10,13 @@ to their comments.
 
 ## User Roles
 1. Creator
-  > This user will create and post new recipes on the platform.
+  - This user will create and post new recipes on the platform.
 2. Viewer
-  > This user will visit the application and view the recipes. This user will be of two types;
-  - Authenticated: A user with a complete profile on the platform
-  - Unauthenticated: A user on the platform just to visit, maybe scroll around
+  - This user will visit the application and view the recipes. This user will be of two types;
+      - Authenticated: A user with a complete profile on the platform
+      - Unauthenticated: A user on the platform just to visit, maybe scroll around
 3. Admin
-  > The superuser of the application.
+  - The superuser of the application.
 
 ## Stack
 ### Client
