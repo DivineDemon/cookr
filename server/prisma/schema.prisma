@@ -47,7 +47,6 @@ model user {
   comments       comment[]
   recipe         recipe[]
   user_followers user_followers[]
-  user_following user_following[]
 }
 
 model comment_replies {
@@ -64,15 +63,6 @@ model user_followers {
   user_id     Int
   follower_id Int
   user        user @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_followers_ibfk_1")
-
-  @@index([user_id], map: "user_id")
-}
-
-model user_following {
-  id           Int  @id @default(autoincrement())
-  user_id      Int
-  following_id Int
-  user         user @relation(fields: [user_id], references: [id], onDelete: Cascade, map: "user_following_ibfk_1")
 
   @@index([user_id], map: "user_id")
 }

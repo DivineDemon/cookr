@@ -82,13 +82,6 @@ to their comments.
 | user_id (FK)     | int  | NOT_NULL |
 | follower_id      | int  | NOT_NULL |
 
-### User Following Table
-| Attribute         | Type |  Attrib  |
-| ----------------- | ---- | -------- |
-| id (PK)           | int  | NOT_NULL |
-| user_id (FK)      | int  | NOT_NULL |
-| following_id      | int  | NOT_NULL |
-
 ### Recipe Comment Table
 | Attribute         | Type |  Attrib  |
 | ----------------- | ---- | -------- |
@@ -97,7 +90,7 @@ to their comments.
 | comment_id (FK)   | int  | NOT_NULL |
 
 ## Database ERD
-![ERD Diagram for Cookr Database](https://svgshare.com/i/snd.svg)
+![ERD Diagram for Cookr Database](https://svgshare.com/i/ssy.svg)
 
 ## API Endpoints
 - Auth:
