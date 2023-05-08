@@ -3,27 +3,16 @@ const prisma = new PrismaClient();
 
 const followUser = async (req, res) => {
   try {
-    const followedUser = await prisma.user.update({
-      where: { id: req.query.user_id },
-      data: { followers: { increment: 1 }, },
-    });
-
-    const followingUser = await prisma.user.update({
-      where: { id: req.user.id },
-      data: { following: { increment: 1 }, },
-    });
-
-    // Update Followed User
     const updateFollowedUser = await prisma.user_followers.create({
-      user_id: req.query.user_id,
-      follower_id: req.user.id,
+      data: {
+        user_id: Number(req.query.user_id),
+        follower_id: req.user.id,
+      },
     });
 
     res.status(200).json({
       success: true,
       message: "Succesfully Followed User!",
-      followed: followedUser,
-      follower: followingUser,
       status: updateFollowedUser,
     });
   } catch (error) {
@@ -35,6 +24,74 @@ const followUser = async (req, res) => {
   }
 };
 
+const unfollowUser = async (req, res) => {
+  try {
+    const updateUnfollowedUser = await prisma.user_followers.deleteMany({
+      where: {
+        AND: [
+          { user_id: Number(req.query.user_id) },
+          { follower_id: req.user.id },
+        ],
+      },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Succesfully Unfollowed User!",
+      status: updateUnfollowedUser,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Please Try Again!",
+      error: error.message,
+    });
+  }
+};
+
+const followersList = async (req, res) => {
+  try {
+    const response = await prisma.user_followers.findMany({
+      where: { user_id: req.user.id, },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Retrieved all Followers",
+      count: response,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Please Try Again!",
+      error: error.message,
+    })
+  }
+};
+
+const followingList = async (req, res) => {
+  try {
+    const response = await prisma.user_followers.findMany({
+      where: { follower_id: req.user.id, },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Retrieved all Following Users",
+      count: response.length,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Please Try Again!",
+      error: error.message,
+    })
+  }
+};
+
 module.exports = {
   followUser,
+  unfollowUser,
+  followersList,
+  followingList,
 };

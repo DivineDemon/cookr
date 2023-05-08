@@ -107,6 +107,14 @@ to their comments.
       - Route: ("/api/user/unfollow")
       - Protected Route
       - Requires ID of the Followed User from `req.query`
+  3. Followers List
+      - Route: ("/api/user/followers")
+      - Protected Route
+      - Requires ID of the User from `req.query`
+  4. Following List
+      - Route: ("/api/user/following")
+      - Protected Route
+      - Requires ID of the User from `req.query`
 - Recipe:
   1. Get All Recipes ("/api/recipe")
   2. Get User Recipes
@@ -151,7 +159,7 @@ to their comments.
   7. Like Comment
       - Route: ("/api/comment/like")
       - Requires ID of Comment Required from `req.query`
-  - Reply:
+- Reply:
   1. Get Comment Replies
       - Route: ("/api/reply/comment-replies")
       - Requires ID of Comment whose Replies are to be Fetched from `req.query`
