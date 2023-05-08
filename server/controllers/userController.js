@@ -57,8 +57,9 @@ const followersList = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "Retrieved all Followers",
-      count: response,
+      message: "Retrieved all Following Users",
+      count: response.length,
+      following: response,
     });
   } catch (error) {
     res.status(500).json({
@@ -79,6 +80,7 @@ const followingList = async (req, res) => {
       success: true,
       message: "Retrieved all Following Users",
       count: response.length,
+      following: response,
     });
   } catch (error) {
     res.status(500).json({

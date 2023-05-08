@@ -160,23 +160,22 @@ to their comments.
       - Route: ("/api/comment/like")
       - Requires ID of Comment Required from `req.query`
 - Reply:
-  1. Get Comment Replies
-      - Route: ("/api/reply/comment-replies")
-      - Requires ID of Comment whose Replies are to be Fetched from `req.query`
-  2. Get Reply
-      - Route: ("/api/reply")
-  3. Add Reply
+  1. Add Reply
+      - Route: ("/api/reply/")
       - Protected Route
       - Requires ID of the Comment the Reply is associated to from `req.query`
-  4. Delete Reply
-      - Route: ("/api/reply")
+  2. Delete Reply
+      - Route: ("/api/comment")
       - Requires ID of the Reply from `req.query`
-  5. Update Reply
-      - Route: ("/api/reply")
+  3. Update Reply
+      - Route: ("/api/comment")
       - Requires ID of the Reply from `req.query`
-  6. Like Reply
-      - Route: ("/api/reply/like")
+  4. Like Reply
+      - Route: ("/api/comment/like")
       - Requires ID of Reply Required from `req.query`
+  5. Get Replies
+      - Route: ("/api/reply/")
+      - Requires ID of Comment whose Replies are Required from `req.query`
 
 ## Task List
 - [x] Project Setup
