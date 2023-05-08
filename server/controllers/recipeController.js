@@ -4,11 +4,18 @@ const prisma = new PrismaClient();
 const getAllRecipes = async (_, res) => {
   try {
     const response = await prisma.recipe.findMany();
-    res.status(200).json({
-      status: true,
-      message: "Retrieved All Recipes!",
-      response,
-    });
+    if (response.length <= 0) {
+      res.status(404).json({
+        success: false,
+        message: "Recipes Not Found!"
+      });
+    } else {
+      res.status(200).json({
+        status: true,
+        message: "Retrieved All Recipes!",
+        response,
+      });
+    }
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -20,20 +27,26 @@ const getAllRecipes = async (_, res) => {
 
 const getUserRecipes = async (req, res) => {
   try {
-    const user_id = Number(req.query.user_id);
     const response = await prisma.recipe.findMany({
       where: {
         user: {
-          id: user_id,
+          id: Number(req.query.user_id),
         },
       },
     });
 
-    res.status(200).json({
-      status: true,
-      message: "Retrieved User Recipes!",
-      response,
-    });
+    if (response.length <= 0) {
+      res.status(404).json({
+        success: false,
+        message: "Recipes Not Found!",
+      });
+    } else {
+      res.status(200).json({
+        status: true,
+        message: "Retrieved User Recipes!",
+        response,
+      });
+    }
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -45,18 +58,24 @@ const getUserRecipes = async (req, res) => {
 
 const getRecipe = async (req, res) => {
   try {
-    const recipe_id = Number(req.query.recipe_id);
     const response = await prisma.recipe.findUnique({
       where: {
-        id: recipe_id,
+        id: Number(req.query.recipe_id),
       },
     });
 
-    res.status(200).json({
-      status: true,
-      message: "Retrieved Recipe!",
-      response,
-    });
+    if (response.length <= 0) {
+      res.status(404).json({
+        success: false,
+        message: "Recipe Not Found!",
+      });
+    } else {
+      res.status(200).json({
+        status: true,
+        message: "Retrieved Recipe!",
+        response,
+      });
+    }
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -98,10 +117,9 @@ const addRecipe = async (req, res) => {
 
 const deleteRecipe = async (req, res) => {
   try {
-    const recipe_id = Number(req.query.recipe_id);
     const response = await prisma.recipe.delete({
       where: {
-        id: recipe_id,
+        id: Number(req.query.recipe_id),
       },
     });
 
@@ -121,10 +139,9 @@ const deleteRecipe = async (req, res) => {
 
 const updateRecipe = async (req, res) => {
   try {
-    const recipe_id = Number(req.query.recipe_id);
     const response = await prisma.recipe.update({
       where: {
-        id: recipe_id,
+        id: Number(req.query.recipe_id),
       },
       data: req.body,
     });
@@ -145,9 +162,8 @@ const updateRecipe = async (req, res) => {
 
 const likeRecipe = async (req, res) => {
   try {
-    const recipe_id = Number(req.query.recipe_id);
     const response = await prisma.recipe.update({
-      where: { id: recipe_id },
+      where: { id: Number(req.query.recipe_id) },
       data: { likes: { increment: 1 } },
     });
 
@@ -167,9 +183,8 @@ const likeRecipe = async (req, res) => {
 
 const downloadRecipe = async (req, res) => {
   try {
-    const recipe_id = Number(req.query.recipe_id);
     const response = await prisma.recipe.update({
-      where: { id: recipe_id },
+      where: { id: Number(req.query.recipe_id) },
       data: { downloads: { increment: 1 } },
     });
 

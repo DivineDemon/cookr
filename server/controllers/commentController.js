@@ -3,20 +3,26 @@ const prisma = new PrismaClient();
 
 const getUserComments = async (req, res) => {
   try {
-    const user_id = Number(req.query.user_id);
     const response = await prisma.comment.findMany({
       where: {
         user: {
-          id: user_id,
+          id: Number(req.query.user_id),
         },
       },
     });
 
-    res.status(200).json({
-      status: true,
-      message: "Retrieved User Comments!",
-      response,
-    });
+    if (response.length <= 0) {
+      res.status(404).json({
+        status: false,
+        message: "Comments Not Found!",
+      });
+    } else {
+      res.status(200).json({
+        status: true,
+        message: "Retrieved User Comments!",
+        response,
+      });
+    }
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -28,11 +34,10 @@ const getUserComments = async (req, res) => {
 
 const getRecipeComments = async (req, res) => {
   try {
-    const recipe_id = Number(req.query.recipe_id);
     const response = await prisma.recipe_comments.findMany({
       where: {
         recipe: {
-          id: recipe_id,
+          id: Number(req.query.recipe_id),
         },
       },
       select: {
@@ -40,31 +45,45 @@ const getRecipeComments = async (req, res) => {
       },
     });
 
-    // Get Comments from IDs Collected
-    const comments = await Promise.all(response.map((id) => {
-      const data = prisma.comment.findMany({
-        where: {
-          id: id.comment_id,
-        },
-      }).then((response) => {
-        return response[0];
-      }).catch((error) => {
+    if (response.length <= 0) {
+      res.status(404).json({
+        success: false,
+        message: "Comments Not Found!",
+      });
+    } else {
+      const comments = await Promise.all(response.map((id) => {
+        const data = prisma.comment.findMany({
+          where: {
+            id: id.comment_id,
+          },
+        }).then((response) => {
+          return response[0];
+        }).catch((error) => {
+          res.status(404).json({
+            success: false,
+            message: "Comments Not Found!",
+            error: error.message,
+          });
+        });
+
+        return data;
+      }));
+
+      if (comments.length <= 0) {
         res.status(404).json({
           success: false,
           message: "Comments Not Found!",
           error: error.message,
         });
-      });
-
-      return data;
-    }));
-
-    res.status(200).json({
-      success: true,
-      message: "Retrieved all Recipe Comments!",
-      recipe_id,
-      comments,
-    });
+      } else {
+        res.status(200).json({
+          success: true,
+          message: "Retrieved all Recipe Comments!",
+          recipe_id: Number(req.query.recipe_id),
+          comments,
+        });
+      }
+    }
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -76,18 +95,24 @@ const getRecipeComments = async (req, res) => {
 
 const getComment = async (req, res) => {
   try {
-    const comment_id = Number(req.query.comment_id);
     const response = await prisma.comment.findUnique({
       where: {
-        id: comment_id,
+        id: Number(req.query.comment_id),
       },
     });
 
-    res.status(200).json({
-      status: true,
-      message: "Retrieved Comment!",
-      response,
-    });
+    if (response.length <= 0) {
+      res.status(404).json({
+        success: false,
+        message: "Comment Not Found!",
+      });
+    } else {
+      res.status(200).json({
+        status: true,
+        message: "Retrieved Comment!",
+        response,
+      });
+    }
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -136,10 +161,9 @@ const addComment = async (req, res) => {
 
 const deleteComment = async (req, res) => {
   try {
-    const comment_id = Number(req.query.comment_id);
     const response = await prisma.comment.delete({
       where: {
-        id: comment_id,
+        id: Number(req.query.comment_id),
       },
     });
 
@@ -159,10 +183,9 @@ const deleteComment = async (req, res) => {
 
 const updateComment = async (req, res) => {
   try {
-    const comment_id = Number(req.query.comment_id);
     const response = await prisma.comment.update({
       where: {
-        id: comment_id,
+        id: Number(req.query.comment_id),
       },
       data: req.body,
     });
@@ -183,9 +206,8 @@ const updateComment = async (req, res) => {
 
 const likeComment = async (req, res) => {
   try {
-    const comment_id = Number(req.query.comment_id);
     const response = await prisma.comment.update({
-      where: { id: comment_id },
+      where: { id: Number(req.query.comment_id) },
       data: { likes: { increment: 1 } },
     });
 

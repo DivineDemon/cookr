@@ -7,9 +7,7 @@ const SECRET = "cookr-recipe-web-application" || process.env.JWT_SECRET;
 
 const register = async (req, res) => {
   try {
-    // Get Data from Body
     const { name, email, password, phone, age, location, image } = req.body;
-    // Encrypt Password
     const encryptedPassword = bcrypt.hashSync(password, 10, (err, hash) => {
       if (!err) {
         return hash;
@@ -21,7 +19,7 @@ const register = async (req, res) => {
         });
       }
     });
-    // Insert User into DB
+
     const response = await prisma.user.create({
       data: {
         name,

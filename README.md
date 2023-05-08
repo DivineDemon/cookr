@@ -210,6 +210,3 @@ npm run serve
 npm i
 npm run dev
 ```
-
-## Issues
-- Handle Empty Returning Data

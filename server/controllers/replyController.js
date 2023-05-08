@@ -49,31 +49,44 @@ const getReplies = async (req, res) => {
       }
     });
 
-    // Get Replies from IDs Collected
-    const replies = await Promise.all(response.map((id) => {
-      const data = prisma.comment.findMany({
-        where: {
-          id: id.reply_id,
-        },
-      }).then((response) => {
-        return response[0];
-      }).catch((error) => {
+    if (response.length <= 0) {
+      res.status(404).json({
+        success: false,
+        message: "Replies Not Found!",
+      });
+    } else {
+      const replies = await Promise.all(response.map((id) => {
+        const data = prisma.comment.findMany({
+          where: {
+            id: id.reply_id,
+          },
+        }).then((response) => {
+          return response[0];
+        }).catch((error) => {
+          res.status(404).json({
+            success: false,
+            message: "Replies Not Found!",
+            error: error.message,
+          });
+        });
+
+        return data;
+      }));
+
+      if (replies.length <= 0) {
         res.status(404).json({
           success: false,
           message: "Replies Not Found!",
-          error: error.message,
         });
-      });
-
-      return data;
-    }));
-
-    res.status(200).json({
-      success: true,
-      message: "Retrieved all Comment Replies!",
-      comment_id: Number(req.query.comment_id),
-      replies,
-    });
+      } else {
+        res.status(200).json({
+          success: true,
+          message: "Retrieved all Comment Replies!",
+          comment_id: Number(req.query.comment_id),
+          replies,
+        });
+      }
+    }
   } catch (error) {
     res.status(500).json({
       success: false,
