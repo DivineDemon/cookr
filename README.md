@@ -5,8 +5,7 @@
 
 Cookr is a web app aimed at helping homecooks and chefs from around the world share their recipes and gain traction
 on it as well. It's almost like a social media application but for cooking and food enthusiasts. You can save recipes
-you like, follow your favourite cooks, show how you feel by liking and commenting too. Even help guide people by replying
-to their comments.
+you like, follow your favourite cooks, show how you feel by liking and commenting too. Even help guide people by replying to their comments.
 
 ## User Roles
 1. Creator

@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
-    <NavBar />
+  <div class="overflow-x-hidden">
+    <!-- <NavBar /> -->
     <router-view></router-view>
   </div>
 </template>
 
-<script setup>
+<!-- <script setup>
 import NavBar from "./components/NavBar.vue";
-</script>
+</script> -->

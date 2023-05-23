@@ -22,7 +22,7 @@ module.exports = {
       },
       fontFamily: {
         heading: ["Playfair Display", "serif"],
-        text: ["Open Sans", "sans-serif"],
+        text: ["Poppins", "sans-serif"],
       },
     },
   },
