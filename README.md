@@ -35,58 +35,58 @@ you like, follow your favourite cooks, show how you feel by liking and commentin
 
 ## Database Schema
 ### User Table
-| Attribute | Type |  Attrib  |
-| --------- | ---- | -------- |
-| id (PK)   | int  | NOT_NULL |
-| name      | text | NOT_NULL |
-| email     | text | NOT_NULL |
-| password  | text | NOT_NULL |
-| phone     | text |          |
-| age       | int  |          |
-| location  | text |          |
-| image     | text |          |
+| Attribute | Type |  Properties  |
+| --------- | ---- | ------------ |
+| id (PK)   | int  | NOT_NULL     |
+| name      | text | NOT_NULL     |
+| email     | text | NOT_NULL     |
+| password  | text | NOT_NULL     |
+| phone     | text |              |
+| age       | int  |              |
+| location  | text |              |
+| image     | text |              |
 
 ### Recipes Table
-| Attribute    | Type |  Attrib  | Default |
-| ------------ | ---- | -------- | ------- |
-| id (PK)      | int  | NOT_NULL |         |
-| user_id (FK) | int  | NOT_NULL |         |
-| likes        | int  |          | 0       |
-| name         | text | NOT_NULL |         |
-| description  | text |          |         |
-| ingredients  | text |          |         |
-| downloads    | int  |          | 0       |
-| created_at   | time |          |         |
-| updated_at   | time |          |         |
+| Attribute    | Type |  Properties  | Default |
+| ------------ | ---- | ------------ | ------- |
+| id (PK)      | int  | NOT_NULL     |         |
+| user_id (FK) | int  | NOT_NULL     |         |
+| likes        | int  |              | 0       |
+| name         | text | NOT_NULL     |         |
+| description  | text |              |         |
+| ingredients  | text |              |         |
+| downloads    | int  |              | 0       |
+| created_at   | time |              |         |
+| updated_at   | time |              |         |
 
 ### Comments Table
-| Attribute      | Type |  Attrib  | Default |
-| -------------- | ---- | -------- | ------- |
-| id (PK)        | int  | NOT_NULL |         |
-| user_id (FK)   | int  | NOT_NULL |         |
-| content        | text |          |         |
-| likes          | int  |          | 0       |
+| Attribute      | Type |  Properties  | Default |
+| -------------- | ---- | ------------ | ------- |
+| id (PK)        | int  | NOT_NULL     |         |
+| user_id (FK)   | int  | NOT_NULL     |         |
+| content        | text |              |         |
+| likes          | int  |              | 0       |
 
 ### Comment Replies Table
-| Attribute       | Type |  Attrib  |
-| --------------- | ---- | -------- |
-| id (PK)         | int  | NOT_NULL |
-| comment_id (FK) | int  | NOT_NULL |
-| reply_id        | int  | NOT_NULL |
+| Attribute       | Type |  Properties  |
+| --------------- | ---- | ------------ |
+| id (PK)         | int  | NOT_NULL     |
+| comment_id (FK) | int  | NOT_NULL     |
+| reply_id        | int  | NOT_NULL     |
 
 ### User Followers Table
-| Attribute        | Type |  Attrib  |
-| ---------------- | ---- | -------- |
-| id (PK)          | int  | NOT_NULL |
-| user_id (FK)     | int  | NOT_NULL |
-| follower_id      | int  | NOT_NULL |
+| Attribute        | Type |  Properties  |
+| ---------------- | ---- | ------------ |
+| id (PK)          | int  | NOT_NULL     |
+| user_id (FK)     | int  | NOT_NULL     |
+| follower_id      | int  | NOT_NULL     |
 
 ### Recipe Comment Table
-| Attribute         | Type |  Attrib  |
-| ----------------- | ---- | -------- |
-| id (PK)           | int  | NOT_NULL |
-| recipe_id (FK)    | int  | NOT_NULL |
-| comment_id (FK)   | int  | NOT_NULL |
+| Attribute         | Type |  Properties  |
+| ----------------- | ---- | ------------ |
+| id (PK)           | int  | NOT_NULL     |
+| recipe_id (FK)    | int  | NOT_NULL     |
+| comment_id (FK)   | int  | NOT_NULL     |
 
 ## Database ERD
 ![ERD Diagram for Cookr Database](https://svgshare.com/i/ssy.svg)
