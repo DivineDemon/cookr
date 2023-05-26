@@ -197,15 +197,18 @@ you like, follow your favourite cooks, show how you feel by liking and commentin
   - [ ] Recipe Expanded Page
 
 **To Run the Project in Development Mode**
-Execute the Following Commands:
-- in the client directory:
-```
-npm i
-npm run serve
-```
-
-- in the server directory:
-```
-npm i
-npm run dev
-```
+1. Start XAMPP Apache and MySQL Servers.
+2. Rename `.env.example` to `.env`.
+3. Execute the Following Commands:
+    - in the client directory:
+    ```
+    npm i
+    npm run serve
+    ```
+    
+    - in the server directory:
+    ```
+    npm i
+    npx prisma db push
+    npm run dev
+    ```
