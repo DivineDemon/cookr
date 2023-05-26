@@ -198,7 +198,7 @@ you like, follow your favourite cooks, show how you feel by liking and commentin
 
 **To Run the Project in Development Mode**
 1. Start XAMPP Apache and MySQL Servers.
-2. Rename `.env.example` to `.env`.
+2. Rename `.env.example` to `.env` inside the `server` Directory.
 3. Execute the Following Commands:
     - in the client directory:
     ```
